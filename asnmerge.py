@@ -9,6 +9,6 @@ for f in files:
 
 merged = pandas.concat(books)
 
-merged['Rule'] = "-A INPUT -s " + merged['AS Range'] + " -j REJECT"
+merged['Rule'] = "-A INPUT -s " + merged['AS Range'] + " -j REJECT --reject-with icmp-port-unreachable"
 
 merged.to_csv('_rules.txt', header=False, index=False, columns=['Rule'])
